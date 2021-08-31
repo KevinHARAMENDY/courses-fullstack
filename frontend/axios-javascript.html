@@ -81,16 +81,20 @@
             let val_name = element.parentElement.parentElement.querySelector(".name");
             
             let etat = val_status.outerHTML;
+
+            let icone = 'fas fa-times';
+            let colorTab = '';
+            let barName = '';
             
             if (etat.includes("times")) {
-                val_status.innerHTML = "<i class='far fa-check-circle'></i>";
-                val_status.parentElement.setAttribute("class","table-danger");
-                val_name.setAttribute("style","text-decoration:line-through; color:grey");
-            } else {
-                val_status.innerHTML = "<i class='fas fa-times'></i>";
-                val_status.parentElement.setAttribute("class","");
-                val_name.setAttribute("style","");
+                icone = 'far fa-check-circle';
+                colorTab = 'table-danger';
+                barName = 'text-decoration:line-through; color:grey';
             }
+            
+            val_status.innerHTML = "<i class='"+ icone +"'></i>";
+            val_status.parentElement.setAttribute("class", colorTab);
+            val_name.setAttribute("style", barName);
         }
 
         function efface(element) {
