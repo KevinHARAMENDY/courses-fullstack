@@ -51,11 +51,11 @@
               <th>#</th>
               <th>nom</th>
               <th>etat</th>
-              <th colspan="2">actions</th>
+              <th>actions</th>
             </tr>
           </thead>
           <tbody id="tbody">
-            <tr v-for="(a,indice) of articles">
+            <tr v-for="(a,indice) of articles" v-bind:class="a.pris ? 'table-danger' : ''">
               <td>{{ a.id }}</td>
               <td>{{ a.nom }}</td>
               <td>{{ a.pris }}</td>
