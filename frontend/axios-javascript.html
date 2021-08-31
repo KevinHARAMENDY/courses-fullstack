@@ -56,8 +56,10 @@
           let template = document.getElementById("ligneTableau");
           let clone = template.content.cloneNode(true);
 
+          if (article.pris == false) clone.querySelector(".status").innerHTML = "<i class='fas fa-times'></i>";
+          else clone.querySelector(".status").innerHTML = "<i class='far fa-check-circle'></i>";
+
           clone.querySelector(".name").innerHTML = article.nom;
-          clone.querySelector(".status").innerHTML = article.pris;
           clone.querySelector(".btn-primary").setAttribute("data-id", article.id);
           clone.querySelector(".btn-danger").setAttribute("data-id", article.id);
           return clone;
@@ -80,12 +82,12 @@
             
             let etat = val_status.outerHTML;
             
-            if (etat.includes("false")) {
-                val_status.innerHTML = "true";
+            if (etat.includes("times")) {
+                val_status.innerHTML = "<i class='far fa-check-circle'></i>";
                 val_status.parentElement.setAttribute("class","table-danger");
                 val_name.setAttribute("style","text-decoration:line-through; color:grey");
             } else {
-                val_status.innerHTML = "false";
+                val_status.innerHTML = "<i class='fas fa-times'></i>";
                 val_status.parentElement.setAttribute("class","");
                 val_name.setAttribute("style","");
             }
