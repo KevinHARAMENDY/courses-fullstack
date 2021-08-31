@@ -55,6 +55,7 @@
         function getLigne(article) {
           let template = document.getElementById("ligneTableau");
           let clone = template.content.cloneNode(true);
+
           clone.querySelector(".name").innerHTML = article.nom;
           clone.querySelector(".status").innerHTML = article.pris;
           clone.querySelector(".btn-primary").setAttribute("data-id", article.id);
@@ -74,11 +75,20 @@
         }
 
         function check(element) {
-            let val = element.parentElement.parentElement.querySelector(".status");
-            let etat = val.outerHTML;
-
-            if (etat.includes("false")) val.innerHTML = "true";
-            else val.innerHTML = "false";
+            let val_status = element.parentElement.parentElement.querySelector(".status");
+            let val_name = element.parentElement.parentElement.querySelector(".name");
+            
+            let etat = val_status.outerHTML;
+            
+            if (etat.includes("false")) {
+                val_status.innerHTML = "true";
+                val_status.parentElement.setAttribute("class","table-danger");
+                val_name.setAttribute("style","text-decoration:line-through; color:grey");
+            } else {
+                val_status.innerHTML = "false";
+                val_status.parentElement.setAttribute("class","");
+                val_name.setAttribute("style","");
+            }
         }
 
         function efface(element) {
